@@ -20,7 +20,7 @@ window.SITE_CONFIG = {
   workingHours: "Her gün 08:00 – 21:00",
 
   // Bu tutar ve üzeri siparişlerde kargo ücretsiz. Kapatmak için 0 yazın.
-  freeShippingThreshold: 2000,
+  freeShippingThreshold: 3000,
   shippingNote: "Siparişler 1–3 iş günü içinde kargoya verilir.",
   paymentOptions: ["Havale / EFT", "Kapıda / Elden Ödeme"],
   // Sepetteki teslimat seçenekleri. İkincisi yerinde teslimdir: seçilirse adres ve kargo sorulmaz.
@@ -155,8 +155,8 @@ window.PRODUCTS = [
     badge: "Güneş Salçası",
     tags: ["Katkısız", "Güneşte kurutma"],
     variants: [
-      { label: "1 kg kavanoz", price: 280 },
-      { label: "3 kg (3 kavanoz)", price: 800 }
+      { label: "3 kg", price: 750 },
+      { label: "6 kg", price: 1400 }
     ],
     details: {
       "İçerik": "Domates, tuz. Koruyucu, renklendirici, nişasta ve şeker yoktur.",
@@ -181,10 +181,10 @@ window.PRODUCTS = [
     badge: "Tatlı & Acı",
     tags: ["Katkısız", "Boya yok"],
     variants: [
-      { label: "Tatlı · 1 kg", price: 340 },
-      { label: "Acı · 1 kg", price: 340 },
-      { label: "Tatlı · 3 kg", price: 960 },
-      { label: "Acı · 3 kg", price: 960 }
+      { label: "Tatlı · 3 kg", price: 950 },
+      { label: "Acı · 3 kg", price: 950 },
+      { label: "Tatlı · 5 kg", price: 1800 },
+      { label: "Acı · 5 kg", price: 1800 }
     ],
     details: {
       "İçerik": "Kırmızı biber, tuz. Acı çeşitte acı biber oranı yüksektir.",
@@ -202,7 +202,7 @@ window.PRODUCTS = [
     name: "Köyün Tadı Tanışma Paketi",
     tagline: "Dört imza lezzet bir arada",
     description:
-      "Ailemizin ürünleriyle tanışmanın en güzel yolu: 1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 1 kg domates salçası ve 1 kg tatlı biber salçası. Tek tek almaktan daha avantajlı.",
+      "Ailemizin ürünleriyle tanışmanın en güzel yolu: 1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası ve 3 kg tatlı biber salçası. Tek tek almaktan daha avantajlı.",
     collage: [
       "assets/img/zeytinyagi.jpg",
       "assets/img/ceviz.jpg",
@@ -213,9 +213,9 @@ window.PRODUCTS = [
     tone: "olive",
     badge: "Avantajlı Paket",
     tags: ["Hediye için ideal", "4 ürün"],
-    variants: [{ label: "Paket (4 ürün)", price: 1300, compareAt: 1420 }],
+    variants: [{ label: "Paket (4 ürün)", price: 2300, compareAt: 2500 }],
     details: {
-      "İçindekiler": "1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 1 kg domates salçası, 1 kg tatlı biber salçası.",
+      "İçindekiler": "1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası, 3 kg tatlı biber salçası.",
       "Paketleme": "Kırılmaya karşı korumalı kutuda, özenle paketlenir.",
       "Kimler için": "İlk kez sipariş verenler, sevdiklerine köy lezzeti göndermek isteyenler."
     },
