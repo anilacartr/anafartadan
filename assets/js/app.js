@@ -67,9 +67,15 @@
       .join("")}</fieldset>`;
   };
 
-  const priceHTML = (v) => `${fmt(v.price)}${v.compareAt ? `<s>${fmt(v.compareAt)}</s>` : ""}`;
+  const hasPrice = (p) => p.variants.every((v) => v.price != null);
+  const priceHTML = (v) => v.price == null
+    ? `<span class="price-soon">Fiyat yakında</span>`
+    : `${fmt(v.price)}${v.compareAt ? `<s>${fmt(v.compareAt)}</s>` : ""}`;
+  const availHTML = (p) => p.availableFrom ? `<p class="avail">${icon("i-clock")} Gönderim: ${esc(p.availableFrom)}</p>` : "";
 
-  const buyHTML = (p) => `
+  // Fiyatı belirlenmemiş ürünlerde sepet yerine WhatsApp'tan ön sipariş
+  const buyHTML = (p) => !hasPrice(p) ? `
+    <button type="button" class="btn btn-wa btn-preorder" data-preorder>${icon("i-wa")} Ön Sipariş İçin Yazın</button>` : `
     <div class="buy-row">
       <div class="qty" role="group" aria-label="Adet">
         <button type="button" data-step="-1" aria-label="Azalt">${icon("i-minus")}</button>
@@ -94,6 +100,7 @@
         <p class="card-tagline">${esc(p.tagline)}</p>
         <p class="card-desc">${esc(p.description)}</p>
         <ul class="tags">${(p.tags || []).map((t) => `<li>${icon("i-check")}${esc(t)}</li>`).join("")}</ul>
+        ${availHTML(p)}
         ${variantsHTML(p, "card")}
         <div class="card-foot">
           <div class="price-row">
@@ -177,6 +184,13 @@
       addBtn._t = setTimeout(() => { addBtn.classList.remove("added"); addBtn.innerHTML = addBtn.dataset.label; }, 1400);
       return;
     }
+    if (e.target.closest("[data-preorder]")) {
+      const v = p.variants[readSelection(scopeEl, p).v];
+      const text = `Merhaba, ${p.name} (${v.label}) için ön sipariş vermek istiyorum.${p.availableFrom ? ` Gönderim: ${p.availableFrom}.` : ""} Fiyat bilgisi alabilir miyim?`;
+      const win = window.open(waLink(text), "_blank");
+      if (win) win.opener = null;
+      return;
+    }
     if (e.target.closest("[data-detail]")) openProduct(p.id);
   });
 
@@ -212,6 +226,7 @@
         <h2 id="pdTitle">${esc(p.name)}</h2>
         <p class="card-tagline">${esc(p.tagline)}</p>
         <p>${esc(p.description)}</p>
+        ${availHTML(p)}
         ${variantsHTML(p, "modal")}
         <div class="card-foot">
           <div class="price-row"><span class="price" data-price>${priceHTML(v)}</span></div>
@@ -228,7 +243,7 @@
   /* ---------- Sepet ---------- */
   const CART_KEY = "anafarta_cart";
   const CUSTOMER_KEY = "anafarta_customer";
-  let cart = store.get(CART_KEY, []).filter((it) => byId[it.id] && byId[it.id].variants[it.v]);
+  let cart = store.get(CART_KEY, []).filter((it) => byId[it.id] && byId[it.id].variants[it.v] && byId[it.id].variants[it.v].price != null);
 
   const cartDialog = $("#cartDialog");
   const els = {
@@ -291,6 +306,7 @@
           <div class="cart-item-info">
             <strong>${esc(p.name)}</strong>
             <small>${esc(v.label)} · ${fmt(v.price)}</small>
+            ${p.availableFrom ? `<small class="cart-avail">Gönderim: ${esc(p.availableFrom)}</small>` : ""}
             <div class="qty" role="group" aria-label="Adet">
               <button type="button" data-cart-step="-1" aria-label="Azalt">${icon("i-minus")}</button>
               <input type="number" inputmode="numeric" min="1" max="99" value="${it.qty}" aria-label="Adet" data-cart-qty>
@@ -389,7 +405,7 @@
     const lines = [`Merhaba, ${C.brandName} sitesinden sipariş vermek istiyorum. 🌿`, "", "*SİPARİŞ*"];
     cart.forEach((it, i) => {
       const { p, v, total: line } = lineOf(it);
-      lines.push(`${i + 1}. ${p.name} (${v.label}) × ${it.qty} = ${fmt(line)}`);
+      lines.push(`${i + 1}. ${p.name} (${v.label}) × ${it.qty} = ${fmt(line)}${p.availableFrom ? ` · Gönderim: ${p.availableFrom}` : ""}`);
     });
     lines.push("", `*Ürün toplamı:* ${fmt(total)}`);
     if (!pickup && C.freeShippingThreshold > 0 && total >= C.freeShippingThreshold) lines.push("*Kargo:* Ücretsiz");

@@ -17,6 +17,9 @@ The photos were resized and recompressed for the web (hero: 2000 px wide, others
 | zeytin-dali.jpg | https://www.pexels.com/photo/close-up-of-ripe-black-olives-on-tree-branch-34803734/ | Hani Salama (https://www.pexels.com/@hani-salama-1956859194/) | Pexels License |
 | zeytin.jpg | https://www.pexels.com/photo/close-up-photo-of-olives-being-poured-with-honey-10548607/ | Skyler Ewing (https://www.pexels.com/@skyler-ewing-266953/) | Pexels License |
 | tarla.jpg | https://www.pexels.com/photo/photograph-of-tomatoes-11611992/ | Czapp Árpád (https://www.pexels.com/@czapp-arpad-3647289/) | Pexels License |
+| siyah-zeytin.jpg | https://www.pexels.com/photo/close-up-photography-of-black-berry-in-brown-wooden-container-175740/ | Clem Onojeghuo (https://www.pexels.com/@conojeghuo/) | Pexels License |
+| kirma-zeytin.jpg | https://www.pexels.com/photo/fresh-green-olives-from-izmir-market-40383939/ | Doğan Alpaslan Demir (https://www.pexels.com/@izafi/) | Pexels License |
+| cizme-zeytin.jpg | https://www.pexels.com/photo/fresh-green-olives-in-market-close-up-29060406/ | Engin Akyurt (https://www.pexels.com/@enginakyurt/) | Pexels License |
 
 Edits: domates-salcasi.jpg was cropped (about 19% off the top and 3% off each side) to remove
 background clutter. hero.jpg was given a light grain-reducing blur (Gaussian 0.5 px) to keep the file small.

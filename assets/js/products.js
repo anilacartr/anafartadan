@@ -34,6 +34,7 @@ window.SITE_CONFIG = {
    - variants: Seçenekler (gramaj, litre, tatlı/acı vb.) ve fiyatları (TL).
      Küçük boyların fiyatı, büyük boyun kilo/litre fiyatına göre hesaplanmıştır.
      default: true olan seçenek kartta seçili gelir.
+   - availableFrom: (isteğe bağlı) ürün henüz hazır değilse gönderim tarihi; kartta, sepette ve mesajda görünür
    - compareAt: (isteğe bağlı) üstü çizili eski fiyat
    - featured: true olan ilk ürün ana sayfadaki "Bu hafta köyden" kartında görünür
    - image: assets/img klasöründeki fotoğraf. Kendi fotoğrafınızı aynı isimle koyabilirsiniz. */
@@ -106,6 +107,7 @@ window.PRODUCTS = [
     emoji: "🫒",
     tone: "gold",
     badge: "Yeni Hasat",
+    availableFrom: "10 Kasım'dan itibaren (tahmini)",
     tags: ["Bu sezonun hasadı", "Soğuk sıkım"],
     variants: [
       { label: "100 ml", price: 50 },
@@ -148,6 +150,90 @@ window.PRODUCTS = [
     difference:
       "Market rafındaki zeytinyağlarının çoğunda hasat yılı yazmaz. Biz hangi sezonun yağını sattığımızı açıkça söylüyoruz: yeni hasat mı, eski hasat mı, siz seçersiniz."
   },
+  /* Sofralık zeytinler. Fiyatları henüz belirlenmedi: price: null olan seçenekler
+     "Fiyat yakında" olarak görünür ve sepet yerine WhatsApp'tan ön sipariş butonu çıkar.
+     Fiyatı belirleyince null yerine rakamı yazmanız yeterli. */
+  {
+    id: "siyah-zeytin",
+    category: "zeytin",
+    categoryLabel: "Zeytin",
+    name: "Siyah Zeytin",
+    tagline: "Dalında olgunlaştı, kahvaltının yıldızı",
+    description:
+      "Kendi zeytinliğimizde dalında tam olgunlaşan zeytinlerden, geleneksel yöntemle ve katkısız hazırlanan sofralık siyah zeytin. Kahvaltı sofralarının vazgeçilmezi.",
+    image: "assets/img/siyah-zeytin.jpg",
+    emoji: "🫒",
+    tone: "olive",
+    badge: "Yeni Sezon",
+    availableFrom: "Ocak 2027'den itibaren",
+    tags: ["Katkısız", "Geleneksel yöntem"],
+    variants: [
+      { label: "500 g", price: null },
+      { label: "1 kg", price: null, default: true }
+    ],
+    details: {
+      "İçerik": "Zeytin, tuz.",
+      "Hasat": "Kasım – Aralık. Dalında olgunlaşan zeytinler elle toplanır.",
+      "Saklama": "Serin bir yerde, kapağı kapalı saklayın. Açtıktan sonra buzdolabında muhafaza edin.",
+      "Kullanım": "Kahvaltıda, salatalarda, zeytin ezmesinde."
+    },
+    difference:
+      "Markette satılan bazı siyah zeytinler, yeşil zeytinin oksijen ve demir glukonatla karartılmasıyla elde edilir. Doğal siyah zeytin ise dalında olgunlaşarak rengini kendisi alır."
+  },
+  {
+    id: "kirma-yesil-zeytin",
+    category: "zeytin",
+    categoryLabel: "Zeytin",
+    name: "Kırma Yeşil Zeytin",
+    tagline: "Tek tek kırıldı, suda tatlandı",
+    description:
+      "Taze yeşil zeytinler tek tek kırılır, suyu değiştirilerek acısı alınır ve salamuraya yatırılır. Diri dokulu, ferah ve hafif acımsı bir köy klasiği.",
+    image: "assets/img/kirma-zeytin.jpg",
+    emoji: "🫒",
+    tone: "olive",
+    badge: "Yeni Sezon",
+    availableFrom: "Aralık 2026'dan itibaren",
+    tags: ["Katkısız", "Elle kırıldı"],
+    variants: [
+      { label: "500 g", price: null },
+      { label: "1 kg", price: null, default: true }
+    ],
+    details: {
+      "İçerik": "Yeşil zeytin, su, tuz.",
+      "Hazırlık": "Zeytinler tek tek kırılır, günlerce suyu değiştirilerek acısı alınır.",
+      "Saklama": "Salamurasıyla birlikte, buzdolabında saklayın.",
+      "Kullanım": "Kahvaltıda, mezelerde, yemeklerin yanında."
+    },
+    difference:
+      "Endüstriyel yeşil zeytinin acısı çoğu zaman kimyasal yolla, hızla giderilir. Kırma zeytinin acısı ise suyla, sabırla ve günler içinde alınır."
+  },
+  {
+    id: "cizme-yesil-zeytin",
+    category: "zeytin",
+    categoryLabel: "Zeytin",
+    name: "Çizme Yeşil Zeytin",
+    tagline: "Çizildi, salamurada dinlendi",
+    description:
+      "Yeşil zeytinlerin üzerine bıçakla çizik atılır; böylece acısı daha kolay çıkar ve salamurayı daha iyi çeker. Kırma zeytine göre daha bütün, dolgun ve göz dolduran bir sofra zeytini.",
+    image: "assets/img/cizme-zeytin.jpg",
+    emoji: "🫒",
+    tone: "olive",
+    badge: "Yeni Sezon",
+    availableFrom: "Aralık 2026'dan itibaren",
+    tags: ["Katkısız", "Elle çizildi"],
+    variants: [
+      { label: "500 g", price: null },
+      { label: "1 kg", price: null, default: true }
+    ],
+    details: {
+      "İçerik": "Yeşil zeytin, su, tuz.",
+      "Hazırlık": "Zeytinler tek tek çizilir, suyu değiştirilerek acısı alınır, ardından salamurada dinlendirilir.",
+      "Saklama": "Salamurasıyla birlikte, buzdolabında saklayın.",
+      "Kullanım": "Kahvaltıda, salatalarda, mezelerde."
+    },
+    difference:
+      "Endüstriyel yeşil zeytinin acısı çoğu zaman kimyasal yolla, hızla giderilir. Çizme zeytin ise suyla ve sabırla, kendi zamanında tatlanır."
+  },
   {
     id: "domates-salcasi",
     category: "salca",
@@ -162,9 +248,9 @@ window.PRODUCTS = [
     badge: "Güneş Salçası",
     tags: ["Katkısız", "Güneşte kurutma"],
     variants: [
-      { label: "300 g", price: 75 },
-      { label: "3 kg", price: 750, default: true },
-      { label: "6 kg", price: 1400 }
+      { label: "200 g", price: 60 },
+      { label: "3 kg", price: 900, default: true },
+      { label: "6 kg", price: 1800 }
     ],
     details: {
       "İçerik": "Domates, tuz. Koruyucu, renklendirici, nişasta ve şeker yoktur.",
@@ -189,12 +275,12 @@ window.PRODUCTS = [
     badge: "Tatlı & Acı",
     tags: ["Katkısız", "Boya yok"],
     variants: [
-      { label: "Tatlı · 300 g", price: 95 },
-      { label: "Tatlı · 3 kg", price: 950, default: true },
-      { label: "Tatlı · 5 kg", price: 1800 },
-      { label: "Acı · 300 g", price: 95 },
-      { label: "Acı · 3 kg", price: 950 },
-      { label: "Acı · 5 kg", price: 1800 }
+      { label: "Tatlı · 200 g", price: 75 },
+      { label: "Tatlı · 3 kg", price: 1125, default: true },
+      { label: "Tatlı · 5 kg", price: 1875 },
+      { label: "Acı · 200 g", price: 75 },
+      { label: "Acı · 3 kg", price: 1125 },
+      { label: "Acı · 5 kg", price: 1875 }
     ],
     details: {
       "İçerik": "Kırmızı biber, tuz. Acı çeşitte acı biber oranı yüksektir.",
@@ -212,7 +298,7 @@ window.PRODUCTS = [
     name: "Tanışma Paketi",
     tagline: "Hepsinden biraz, önce tadına bakın",
     description:
-      "Ürünlerimizi ilk kez alacaklar için küçük bir başlangıç: 150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat ve 100 ml eski hasat zeytinyağı, 300 g domates salçası ve 300 g biber salçası. İki zeytinyağını yan yana tadıp farkı kendiniz görün.",
+      "Ürünlerimizi ilk kez alacaklar için küçük bir başlangıç: 150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat ve 100 ml eski hasat zeytinyağı, 200 g domates salçası ve 200 g biber salçası. İki zeytinyağını yan yana tadıp farkı kendiniz görün.",
     collage: [
       "assets/img/ic-ceviz.jpg",
       "assets/img/zeytin.jpg",
@@ -224,13 +310,14 @@ window.PRODUCTS = [
     wide: true,
     badge: "Hepsinden Biraz",
     tags: ["6 ürün", "Küçük boylar"],
-    // 45 + 75 + 50 + 40 + 75 + 95 = 380 TL
+    availableFrom: "10 Kasım'dan itibaren (tahmini)",
+    // 45 + 75 + 50 + 40 + 60 + 75 = 345 TL
     variants: [
-      { label: "Tatlı biber salçalı", price: 380 },
-      { label: "Acı biber salçalı", price: 380 }
+      { label: "Tatlı biber salçalı", price: 345 },
+      { label: "Acı biber salçalı", price: 345 }
     ],
     details: {
-      "İçindekiler": "150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat zeytinyağı, 100 ml eski hasat zeytinyağı, 300 g domates salçası, 300 g biber salçası (tatlı ya da acı).",
+      "İçindekiler": "150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat zeytinyağı, 100 ml eski hasat zeytinyağı, 200 g domates salçası, 200 g biber salçası (tatlı ya da acı).",
       "Fiyat": "Paket fiyatı, içindeki ürünlerin gramaj fiyatlarının toplamıdır.",
       "Kimler için": "Ürünlerimizin tadına önce az miktarda bakmak isteyenler."
     },
@@ -256,10 +343,11 @@ window.PRODUCTS = [
     wide: true,
     badge: "4'ü Bir Arada",
     tags: ["Hediye için ideal", "4 ürün"],
-    // 500 (1 L yeni hasat) + 300 (1 kg ceviz) + 750 (3 kg domates) + 950 (3 kg biber) = 2.500 TL
+    availableFrom: "10 Kasım'dan itibaren (tahmini)",
+    // 500 (1 L yeni hasat) + 300 (1 kg ceviz) + 900 (3 kg domates) + 1.125 (3 kg biber) = 2.825 TL
     variants: [
-      { label: "Tatlı biber salçalı", price: 2500 },
-      { label: "Acı biber salçalı", price: 2500 }
+      { label: "Tatlı biber salçalı", price: 2825 },
+      { label: "Acı biber salçalı", price: 2825 }
     ],
     details: {
       "İçindekiler": "1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası, 3 kg biber salçası (tatlı ya da acı).",
