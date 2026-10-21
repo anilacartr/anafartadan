@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Müşteri Yorumları | Anafartadan</title>
+  <meta name="description" content="Anafartadan müşterilerinin ceviz, zeytinyağı ve ev salçaları hakkındaki yorumları. Siz de deneyiminizi paylaşın.">
+  <meta name="theme-color" content="#1C2715">
+  <link rel="canonical" href="https://anilacartr.github.io/anafartadan/yorumlar.html">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- İkon seti -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="logo-mark" viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" fill="currentColor"/><path d="M13.5 35.5C20 31 26 23.5 31.5 12.5" fill="none" stroke="#F5EEDF" stroke-width="1.6" stroke-linecap="round"/><path d="M18.6 29.6c-4.6.2-7.6-2.4-8.6-6.6 4.4-.6 7.8 1.6 8.6 6.6Z" fill="#B9C28C"/><path d="M23.4 24.2c-.8-4.6 1.2-8.2 5.2-9.8 1 4.4-1 8-5.2 9.8Z" fill="#B9C28C"/><path d="M26.4 20.4c3.8-2.6 7.8-2.4 11-.2-3 3.2-7 3.6-11 .2Z" fill="#B9C28C"/><ellipse cx="17" cy="33.6" rx="3" ry="3.8" transform="rotate(-35 17 33.6)" fill="#C9952B"/></symbol>
+  </defs>
+</svg>
+
+<header class="page-header">
+  <div class="container page-header-inner">
+    <a class="brand light" href="index.html" aria-label="Anafartadan ana sayfa">
+      <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+      <span class="brand-text"><strong>Anafartadan</strong><small>Büyükanafarta Köy Ürünleri</small></span>
+    </a>
+    <a class="btn btn-ghost btn-sm" href="index.html"><svg class="ic flip" aria-hidden="true"><use href="#i-arrow"/></svg> Ana sayfa</a>
+  </div>
+</header>
+
+<main>
+  <section class="rv-hero" aria-labelledby="rvTitle">
+    <div class="container rv-hero-inner">
+      <span class="kicker light">geri bildirim</span>
+      <h1 id="rvTitle">Müşterilerimiz ne diyor?</h1>
+      <p class="rv-hero-lead">Ürünlerimizi deneyen müşterilerimizin yorumları. Gizlilik için ad ve soyadların bir kısmını gizliyoruz.</p>
+      <p class="rv-summary" data-reviews-summary></p>
+      <div class="rv-slider" data-reviews-slider></div>
+      <div class="rv-empty" data-reviews-empty>
+        <span class="rv-empty-ic" aria-hidden="true">💬</span>
+        <strong>Henüz yorum yok</strong>
+        <p>Ürünlerimizi denediyseniz ilk yorumu siz yazın. Görüşleriniz hem bize hem de yeni müşterilerimize yol gösterir.</p>
+        <a class="btn btn-gold" href="#yorum-yaz">Yorum Yazın</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rv-all" data-reviews-list-wrap hidden aria-labelledby="rvAllTitle">
+    <div class="container">
+      <h2 class="rv-all-title" id="rvAllTitle">Tüm yorumlar</h2>
+      <div class="rv-grid" data-reviews-list></div>
+    </div>
+  </section>
+
+  <section class="section rv-write" id="yorum-yaz" aria-labelledby="rvWriteTitle">
+    <div class="container rv-write-grid">
+      <div class="rv-write-copy">
+        <span class="kicker">siz de yazın</span>
+        <h2 id="rvWriteTitle">Görüşünüz bizim için <em>çok değerli.</em></h2>
+        <p>Yorumunuz WhatsApp üzerinden doğrudan bize ulaşır. Okuduktan sonra, adınızın ve soyadınızın bir kısmını gizleyerek bu sayfada yayınlarız.</p>
+        <ul class="rv-privacy">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Ad ve soyadınızın yalnızca ilk harfleri görünür: <b>Ay*** Yı***</b></span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Telefon numaranız yayınlanmaz.</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>İl bilgisi isteğe bağlıdır.</span></li>
+        </ul>
+      </div>
+
+      <form class="rv-form" id="reviewForm" novalidate>
+        <div class="field-row">
+          <label class="field"><span>Ad Soyad *</span><input name="name" type="text" autocomplete="name" placeholder="Adınız Soyadınız"></label>
+          <label class="field"><span>İl / İlçe</span><input name="city" type="text" autocomplete="address-level2" placeholder="Örn. İzmir"></label>
+        </div>
+        <label class="field"><span>Hangi ürün?</span><select name="product"></select></label>
+        <fieldset class="field rating-field">
+          <legend>Puanınız *</legend>
+          <div class="rating">
+            <input type="radio" id="r5" name="rating" value="5"><label for="r5" aria-label="5 yıldız">★</label>
+            <input type="radio" id="r4" name="rating" value="4"><label for="r4" aria-label="4 yıldız">★</label>
+            <input type="radio" id="r3" name="rating" value="3"><label for="r3" aria-label="3 yıldız">★</label>
+            <input type="radio" id="r2" name="rating" value="2"><label for="r2" aria-label="2 yıldız">★</label>
+            <input type="radio" id="r1" name="rating" value="1"><label for="r1" aria-label="1 yıldız">★</label>
+          </div>
+        </fieldset>
+        <label class="field"><span>Yorumunuz *</span><textarea name="text" rows="5" maxlength="600" placeholder="Ürünlerimizi nasıl buldunuz?"></textarea></label>
+        <label class="consent"><input type="checkbox" name="consent" value="evet"><span>Yorumumun, adımın ve soyadımın bir kısmı gizlenerek bu sitede yayınlanmasına izin veriyorum.</span></label>
+        <p class="rv-error" data-form-error role="alert" hidden></p>
+        <button class="btn btn-wa btn-lg btn-block" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp ile Gönder</button>
+        <p class="rv-ok" data-form-ok role="status" hidden>Teşekkürler! WhatsApp açıldı. Mesajı gönderdiğinizde yorumunuz bize ulaşır.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer page-footer">
+  <div class="container footer-bottom">
+    <p>© <span id="year"></span> Anafartadan · Tüm hakları saklıdır.</p>
+    <p><a href="iade-degisim.html">Değişim ve İade Koşulları</a></p>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa aria-label="WhatsApp'tan yazın">
+  <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>
+  <span class="wa-float-label">Sipariş & Bilgi</span>
+</a>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/yorumlar.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/reviews.js"></script>
+</body>
+</html>

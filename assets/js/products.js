@@ -202,7 +202,7 @@ window.PRODUCTS = [
     name: "Köyün Tadı Tanışma Paketi",
     tagline: "Dört imza lezzet bir arada",
     description:
-      "Ailemizin ürünleriyle tanışmanın en güzel yolu: 1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası ve 3 kg tatlı biber salçası. Tek tek almaktan daha avantajlı.",
+      "Ailemizin ürünleriyle tanışmanın en güzel yolu: 1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası ve 3 kg biber salçası (tatlı ya da acı). Sevdiklerinize hediye olarak da gönderebilirsiniz.",
     collage: [
       "assets/img/zeytinyagi.jpg",
       "assets/img/ceviz.jpg",
@@ -211,16 +211,131 @@ window.PRODUCTS = [
     ],
     emoji: "🧺",
     tone: "olive",
-    badge: "Avantajlı Paket",
+    wide: true,
+    badge: "4'ü Bir Arada",
     tags: ["Hediye için ideal", "4 ürün"],
-    variants: [{ label: "Paket (4 ürün)", price: 2300, compareAt: 2500 }],
+    // 500 (1 L yeni hasat) + 300 (1 kg ceviz) + 750 (3 kg domates) + 950 (3 kg biber) = 2.500 TL
+    variants: [
+      { label: "Tatlı biber salçalı", price: 2500 },
+      { label: "Acı biber salçalı", price: 2500 }
+    ],
     details: {
-      "İçindekiler": "1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası, 3 kg tatlı biber salçası.",
+      "İçindekiler": "1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası, 3 kg biber salçası (tatlı ya da acı).",
       "Paketleme": "Kırılmaya karşı korumalı kutuda, özenle paketlenir.",
       "Kimler için": "İlk kez sipariş verenler, sevdiklerine köy lezzeti göndermek isteyenler."
     },
     difference:
       "Market sepetinde bu dört ürünü aynı aileden ve bu sezonun hasadından bir arada bulmanız mümkün değil."
+  },
+
+  /* ---------- DENEME PAKETLERİ ----------
+     Fiyatlar büyük boyun kilo/litre fiyatına göre hesaplanmıştır.
+     Büyük boy fiyatı değişirse deneme fiyatlarını da güncelleyin.
+     trialOf: "Detay" tıklanınca açılacak asıl ürün */
+  {
+    id: "deneme-kutusu",
+    category: "deneme",
+    categoryLabel: "Deneme",
+    name: "Deneme Kutusu",
+    tagline: "Hepsinden biraz, önce tadına bakın",
+    description:
+      "Ürünlerimizi ilk kez deneyecekler için: 150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat ve 100 ml eski hasat zeytinyağı, 300 g domates salçası ve 300 g biber salçası. İki zeytinyağını yan yana tadıp farkı kendiniz görün.",
+    collage: [
+      "assets/img/ic-ceviz.jpg",
+      "assets/img/zeytin.jpg",
+      "assets/img/domates-salcasi.jpg",
+      "assets/img/biber-salcasi.jpg"
+    ],
+    emoji: "🧺",
+    tone: "olive",
+    wide: true,
+    badge: "Deneme Kutusu",
+    tags: ["6 ürün", "Kilo fiyatına göre"],
+    // 45 + 75 + 50 + 40 + 75 + 95 = 380 TL
+    variants: [
+      { label: "Tatlı biber salçalı", price: 380 },
+      { label: "Acı biber salçalı", price: 380 }
+    ],
+    details: {
+      "İçindekiler": "150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat zeytinyağı, 100 ml eski hasat zeytinyağı, 300 g domates salçası, 300 g biber salçası (tatlı ya da acı).",
+      "Fiyat": "Her ürün, büyük boyunun kilo ya da litre fiyatına göre hesaplanmıştır.",
+      "Kimler için": "Köy ürünlerimizi önce az miktarda denemek isteyenler."
+    }
+  },
+  {
+    id: "deneme-kabuklu-ceviz",
+    trialOf: "kabuklu-ceviz",
+    category: "deneme",
+    categoryLabel: "Deneme",
+    name: "Kabuklu Ceviz",
+    unitNote: "kg fiyatı 300 ₺",
+    image: "assets/img/ceviz.jpg",
+    emoji: "🌰",
+    tone: "walnut",
+    variants: [{ label: "150 g", price: 45 }]
+  },
+  {
+    id: "deneme-ic-ceviz",
+    trialOf: "ic-ceviz",
+    category: "deneme",
+    categoryLabel: "Deneme",
+    name: "İç Ceviz",
+    unitNote: "kg fiyatı 750 ₺",
+    image: "assets/img/ic-ceviz.jpg",
+    emoji: "🌰",
+    tone: "walnut",
+    variants: [{ label: "100 g", price: 75 }]
+  },
+  {
+    id: "deneme-yeni-hasat",
+    trialOf: "zeytinyagi-yeni-hasat",
+    category: "deneme",
+    categoryLabel: "Deneme",
+    name: "Yeni Hasat Zeytinyağı",
+    unitNote: "litre fiyatı 500 ₺",
+    image: "assets/img/zeytinyagi.jpg",
+    emoji: "🫒",
+    tone: "gold",
+    variants: [{ label: "100 ml", price: 50 }]
+  },
+  {
+    id: "deneme-eski-hasat",
+    trialOf: "zeytinyagi-eski-hasat",
+    category: "deneme",
+    categoryLabel: "Deneme",
+    name: "Eski Hasat Zeytinyağı",
+    unitNote: "litre fiyatı 400 ₺",
+    image: "assets/img/zeytin.jpg",
+    emoji: "🫒",
+    tone: "olive",
+    variants: [{ label: "100 ml", price: 40 }]
+  },
+  {
+    id: "deneme-domates-salcasi",
+    trialOf: "domates-salcasi",
+    category: "deneme",
+    categoryLabel: "Deneme",
+    name: "Domates Salçası",
+    unitNote: "3 kg 750 ₺ üzerinden",
+    image: "assets/img/domates-salcasi.jpg",
+    emoji: "🍅",
+    tone: "terra",
+    variants: [{ label: "300 g", price: 75 }]
+  },
+  {
+    id: "deneme-biber-salcasi",
+    trialOf: "biber-salcasi",
+    category: "deneme",
+    categoryLabel: "Deneme",
+    name: "Biber Salçası",
+    unitNote: "3 kg 950 ₺ üzerinden",
+    image: "assets/img/biber-salcasi.jpg",
+    emoji: "🌶️",
+    tone: "terra",
+    variants: [
+      { label: "Tatlı · 300 g", price: 95 },
+      { label: "Acı · 300 g", price: 95 }
+    ]
   }
 ];
 

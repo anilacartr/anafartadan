@@ -14,6 +14,7 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const icon = (id, cls = "ic") => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
   const waLink = (text) => `https://wa.me/${C.whatsappNumber}?text=${encodeURIComponent(text)}`;
+  const displayName = (p) => (p.trialOf ? "Deneme · " : "") + p.name;
 
   const store = {
     get(key, fallback) {
@@ -24,27 +25,6 @@
     }
   };
 
-  if (/^90?5?0{6,}$/.test(C.whatsappNumber)) {
-    console.warn("WhatsApp numarası henüz ayarlanmamış: assets/js/products.js → SITE_CONFIG.whatsappNumber");
-  }
-
-  /* ---------- Ayarlardan gelen metinler ve WhatsApp linkleri ---------- */
-  $$("[data-wa]").forEach((a) => {
-    a.href = waLink(a.dataset.wa || C.defaultMessage);
-    a.target = "_blank";
-    a.rel = "noopener";
-  });
-  $$("[data-config]").forEach((el) => { if (C[el.dataset.config] != null) el.textContent = C[el.dataset.config]; });
-  $$("[data-config-href]").forEach((el) => { if (C[el.dataset.configHref]) el.href = C[el.dataset.configHref]; });
-  $$("[data-config-list]").forEach((el) => {
-    const list = C[el.dataset.configList] || [];
-    el.textContent = list.length > 1 ? list.slice(0, -1).join(", ") + " veya " + list.at(-1) : list.join("");
-  });
-  $$("[data-free-shipping-text]").forEach((el) => {
-    el.textContent = C.freeShippingThreshold > 0 ? `${fmt(C.freeShippingThreshold)} ve üzeri siparişlerde kargo ücretsizdir.` : "";
-  });
-  $("#year").textContent = new Date().getFullYear();
-
   // Duyuru şeridini mobilde kesintisiz kaydırmak için kopyala
   const track = $(".announce-track");
   if (track) {
@@ -54,11 +34,6 @@
     dups.forEach((el) => { el.classList.add("dup"); el.setAttribute("aria-hidden", "true"); });
     track.append(...dups);
   }
-
-  // Yüklenemeyen görselleri gizle, altındaki yedek görünüm kalsın
-  document.addEventListener("error", (e) => {
-    if (e.target.tagName === "IMG") e.target.classList.add("img-missing");
-  }, true);
 
   /* ---------- Header ---------- */
   const header = $("#siteHeader");
@@ -106,7 +81,7 @@
 
   const cardHTML = (p) => {
     const v = p.variants[0];
-    const wide = p.category === "paket" ? " card--wide" : "";
+    const wide = p.wide ? " card--wide" : "";
     return `
     <article class="card${wide}" data-product="${p.id}" data-category="${p.category}" data-reveal>
       <button type="button" class="card-media tone-${p.tone}" data-detail aria-label="${esc(p.name)} detayları">
@@ -132,7 +107,31 @@
   };
 
   const grid = $("#productGrid");
-  grid.innerHTML = PRODUCTS.map(cardHTML).join("");
+  grid.innerHTML = PRODUCTS.filter((p) => p.category !== "deneme").map(cardHTML).join("");
+
+  // Deneme paketleri: kutu büyük kartta, küçük boylar kompakt kartlarda
+  const trialCardHTML = (p) => {
+    const v = p.variants[0];
+    return `
+    <article class="tcard" data-product="${p.id}" data-reveal>
+      <button type="button" class="tcard-media tone-${p.tone}" data-detail aria-label="${esc(p.name)} hakkında bilgi">
+        <span class="badge gold">Deneme</span>
+        ${mediaHTML(p)}
+      </button>
+      <div class="tcard-body">
+        <h3 class="tcard-title">${esc(p.name)}</h3>
+        ${p.unitNote ? `<p class="tcard-unit">${esc(p.unitNote)}</p>` : ""}
+        ${p.variants.length > 1 ? variantsHTML(p, "trial") : `<span class="tcard-size">${esc(v.label)}</span>`}
+        <div class="tcard-foot">
+          <span class="price" data-price>${priceHTML(v)}</span>
+          <button type="button" class="btn btn-add" data-add aria-label="${esc(p.name)} deneme paketini sepete ekle">${icon("i-plus")} Ekle</button>
+        </div>
+      </div>
+    </article>`;
+  };
+  const trials = PRODUCTS.filter((p) => p.category === "deneme");
+  $("#trialFeatured").innerHTML = trials.filter((p) => p.wide).map(cardHTML).join("");
+  $("#trialGrid").innerHTML = trials.filter((p) => !p.wide).map(trialCardHTML).join("");
 
   // Hero'daki öne çıkan ürün kartı
   const featured = PRODUCTS.find((p) => p.featured) || PRODUCTS[0];
@@ -202,7 +201,7 @@
       addBtn._t = setTimeout(() => { addBtn.classList.remove("added"); addBtn.innerHTML = addBtn.dataset.label; }, 1400);
       return;
     }
-    if (e.target.closest("[data-detail]")) openProduct(p.id);
+    if (e.target.closest("[data-detail]")) openProduct(p.trialOf || p.id);
   });
 
   document.addEventListener("change", (e) => {
@@ -285,7 +284,7 @@
     else cart.push({ id, v, qty });
     saveCart();
     const { p, v: variant } = lineOf({ id, v, qty });
-    showToast(`${p.name} (${variant.label}) sepete eklendi`);
+    showToast(`${displayName(p)} (${variant.label}) sepete eklendi`);
     $$("[data-cart-count]").forEach((b) => { b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); });
   }
 
@@ -314,7 +313,7 @@
         <li class="cart-item" data-index="${i}">
           <div class="cart-thumb tone-${p.tone}"><span class="media-fallback" aria-hidden="true">${p.emoji || ""}</span><img src="${esc(thumb)}" alt=""></div>
           <div class="cart-item-info">
-            <strong>${esc(p.name)}</strong>
+            <strong>${esc(displayName(p))}</strong>
             <small>${esc(v.label)} · ${fmt(v.price)}</small>
             <div class="qty" role="group" aria-label="Adet">
               <button type="button" data-cart-step="-1" aria-label="Azalt">${icon("i-minus")}</button>
@@ -414,7 +413,7 @@
     const lines = [`Merhaba, ${C.brandName} sitesinden sipariş vermek istiyorum. 🌿`, "", "*SİPARİŞ*"];
     cart.forEach((it, i) => {
       const { p, v, total: line } = lineOf(it);
-      lines.push(`${i + 1}. ${p.name} (${v.label}) × ${it.qty} = ${fmt(line)}`);
+      lines.push(`${i + 1}. ${displayName(p)} (${v.label}) × ${it.qty} = ${fmt(line)}`);
     });
     lines.push("", `*Ürün toplamı:* ${fmt(total)}`);
     if (!pickup && C.freeShippingThreshold > 0 && total >= C.freeShippingThreshold) lines.push("*Kargo:* Ücretsiz");

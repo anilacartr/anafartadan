@@ -32,8 +32,8 @@
   </defs>
 </svg>
 
-<header class="legal-header">
-  <div class="container legal-header-inner">
+<header class="page-header">
+  <div class="container page-header-inner">
     <a class="brand light" href="index.html" aria-label="Anafartadan ana sayfa">
       <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
       <span class="brand-text"><strong>Anafartadan</strong><small>Büyükanafarta Köy Ürünleri</small></span>
@@ -111,7 +111,7 @@
   </div>
 </main>
 
-<footer class="site-footer legal-footer">
+<footer class="site-footer page-footer">
   <div class="container footer-bottom">
     <p>© <span id="year"></span> Anafartadan · Tüm hakları saklıdır.</p>
     <p>Büyükanafarta, Eceabat / Çanakkale'den sevgiyle 🫒</p>
@@ -124,18 +124,6 @@
 </a>
 
 <script src="assets/js/products.js"></script>
-<script>
-  (() => {
-    const C = window.SITE_CONFIG;
-    const waLink = (text) => `https://wa.me/${C.whatsappNumber}?text=${encodeURIComponent(text)}`;
-    document.querySelectorAll("[data-wa]").forEach((a) => {
-      a.href = waLink(a.dataset.wa || C.defaultMessage);
-      a.target = "_blank";
-      a.rel = "noopener";
-    });
-    document.querySelectorAll("[data-config]").forEach((el) => { if (C[el.dataset.config] != null) el.textContent = C[el.dataset.config]; });
-    document.getElementById("year").textContent = new Date().getFullYear();
-  })();
-</script>
+<script src="assets/js/site.js"></script>
 </body>
 </html>

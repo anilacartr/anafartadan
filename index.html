@@ -83,7 +83,7 @@
       <span class="dot">•</span>
       <span>🫒 Yeni hasat zeytinyağı sezonu başladı</span>
       <span class="dot">•</span>
-      <span>🚚 Türkiye'nin her yerine kargo</span>
+      <span>🧺 Küçük deneme paketleri geldi</span>
       <span class="dot">•</span>
       <span>📍 Köye gelip yerinde de alabilirsiniz</span>
     </div>
@@ -98,9 +98,10 @@
     </a>
     <nav class="nav" id="nav" aria-label="Ana menü">
       <a href="#urunler">Ürünler</a>
+      <a href="#deneme">Deneme</a>
       <a href="#fark">Marketten Farkı</a>
       <a href="#biz-kimiz">Biz Kimiz?</a>
-      <a href="#hasat">Hasat Takvimi</a>
+      <a href="yorumlar.html">Yorumlar</a>
       <a href="#siparis">Nasıl Sipariş?</a>
       <a href="#sss">SSS</a>
     </nav>
@@ -188,6 +189,23 @@
       <p class="products-note">
         <svg class="ic" aria-hidden="true"><use href="#i-sprout"/></svg>
         Ürünlerimiz sezonluktur ve sınırlı miktarda üretilir. Stok durumu için WhatsApp'tan sorabilirsiniz.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ DENEME PAKETLERİ ============ -->
+  <section class="section trial" id="deneme" aria-labelledby="denemeTitle">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="kicker">önce tadına bakın</span>
+        <h2 id="denemeTitle">Küçük paketlerle <em>tanışın.</em></h2>
+        <p>Ürünlerimizi ilk kez deneyecekseniz küçük boylarla başlayın. Fiyatlar büyük boyların kilo ve litre fiyatına göre hesaplanır; beğenirseniz büyük boya geçersiniz.</p>
+      </div>
+      <div class="trial-featured" id="trialFeatured"></div>
+      <div class="trial-grid" id="trialGrid"></div>
+      <p class="products-note">
+        <svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg>
+        Kargo ücreti siparişinize göre WhatsApp'ta bildirilir. Deneme paketlerini diğer ürünlerinizle birlikte ya da köyden yerinde teslim alabilirsiniz.
       </p>
     </div>
   </section>
@@ -333,6 +351,19 @@
     </div>
   </section>
 
+  <!-- ============ MÜŞTERİ YORUMLARI (yorum eklenince görünür) ============ -->
+  <section class="section reviews-home" id="yorumlar" data-reviews-home hidden aria-labelledby="yorumTitle">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">müşterilerimiz ne diyor?</span>
+        <h2 id="yorumTitle">Sofralarından <em>bize ulaşanlar.</em></h2>
+        <p class="rv-summary" data-reviews-summary></p>
+      </div>
+      <div class="rv-slider" data-reviews-slider></div>
+      <p class="reviews-home-cta"><a class="btn btn-dark" href="yorumlar.html">Tüm yorumlar ve yorum yazın <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    </div>
+  </section>
+
   <!-- ============ TARLADAN SOFRAYA + HASAT TAKVİMİ ============ -->
   <section class="section journey" id="hasat" aria-labelledby="hasatTitle">
     <div class="container">
@@ -437,6 +468,10 @@
           <p><span data-config="shippingNote"></span> Türkiye'nin her yerine gönderim yapıyoruz. <span data-free-shipping-text></span> Teslimat bulunduğunuz yere göre genellikle 1–3 gün sürer.</p>
         </details>
         <details>
+          <summary>Ürünleri önce az miktarda deneyebilir miyim?</summary>
+          <p>Evet. <a href="#deneme">Deneme paketlerimizle</a> ceviz, zeytinyağı ve salçalarımızı küçük boylarda deneyebilirsiniz. Fiyatlar büyük boyların kilo ve litre fiyatına göre hesaplanır. Hepsini birden denemek isterseniz Deneme Kutusu'nu seçebilirsiniz.</p>
+        </details>
+        <details>
           <summary>Köye gelip ürünleri yerinde alabilir miyim?</summary>
           <p>Elbette. Büyükanafarta'ya gelip ürünlerimizi yerinde görebilir, beğendiklerinizi buradan satın alabilirsiniz. Gelmeden önce WhatsApp'tan haber vermeniz yeterli; bahçede ya da tarlada olabiliriz, sizi karşılayalım. Dilerseniz siparişinizi sepetten “Köye gelip yerinde alacağım” seçeneğiyle önceden iletin, geldiğinizde hazır olsun.</p>
         </details>
@@ -510,6 +545,7 @@
         <li><a href="#urunler" data-filter-link="zeytinyagi">Zeytinyağı</a></li>
         <li><a href="#urunler" data-filter-link="salca">Domates & Biber Salçası</a></li>
         <li><a href="#urunler" data-filter-link="paket">Tanışma Paketi</a></li>
+        <li><a href="#deneme">Deneme Paketleri</a></li>
       </ul>
     </div>
     <div>
@@ -518,6 +554,7 @@
         <li><a href="#fark">Marketten Farkı</a></li>
         <li><a href="#biz-kimiz">Biz Kimiz?</a></li>
         <li><a href="#hasat">Hasat Takvimi</a></li>
+        <li><a href="yorumlar.html">Müşteri Yorumları</a></li>
         <li><a href="#sss">Sıkça Sorulanlar</a></li>
         <li><a href="iade-degisim.html">Değişim ve İade</a></li>
       </ul>
@@ -621,6 +658,9 @@
 </div>
 
 <script src="assets/js/products.js"></script>
+<script src="assets/js/yorumlar.js"></script>
+<script src="assets/js/site.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/reviews.js"></script>
 </body>
 </html>

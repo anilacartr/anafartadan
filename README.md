@@ -18,9 +18,20 @@ Bütün ayarlar **`assets/js/products.js`** dosyasındadır:
 | `paymentOptions` | Sepette gösterilen ödeme seçenekleri |
 | `deliveryOptions` | Teslimat seçenekleri. İkincisi "köye gelip yerinde alma"dır; seçilirse adres ve kargo sorulmaz |
 | `PRODUCTS` | Ürünler, seçenekler (gramaj, litre) ve **fiyatlar** |
+| Deneme paketleri | `PRODUCTS` içinde `category: "deneme"` olan ürünler. Fiyatları büyük boyun kilo/litre fiyatından hesaplanmıştır; büyük boy fiyatı değişirse bunları da güncelleyin |
 | `HARVEST` | Hasat takvimindeki aylar |
 
-Ceviz ve zeytinyağı fiyatları güncel. Salça fiyatları ve tanışma paketi fiyatı **örnek fiyatlardır**, kendi fiyatlarınızla değiştirin.
+Tanışma paketi ve Deneme Kutusu'nun fiyatı, içindeki ürünlerin gramaj fiyatlarının toplamıdır.
+
+## Müşteri yorumları
+
+Yorumlar **`assets/js/yorumlar.js`** dosyasındadır. Müşteri, Yorumlar sayfasındaki formu doldurduğunda yorumu WhatsApp ile size gelir. Yayınlamak istediğiniz yorumu dosyadaki listenin en üstüne ekleyin:
+
+```js
+{ name: "Ayşe Yılmaz", city: "İstanbul", product: "Kabuklu Ceviz", rating: 5, date: "2026-10", text: "Yorum metni" },
+```
+
+Adı tam yazın; site otomatik olarak **Ay\*\*\* Yı\*\*\*** şeklinde gizler. İlk yorum eklendiğinde ana sayfadaki "Müşterilerimiz ne diyor?" bölümü de kendiliğinden görünür hale gelir. Yalnızca gerçek müşterilerden gelen ve yayın izni verilmiş yorumları ekleyin.
 
 ## Fotoğraflar
 
