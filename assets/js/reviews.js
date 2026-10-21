@@ -110,7 +110,7 @@
   const form = document.getElementById("reviewForm");
   if (!form) return;
 
-  const productNames = (window.PRODUCTS || []).filter((p) => p.category !== "deneme").map((p) => p.name);
+  const productNames = (window.PRODUCTS || []).map((p) => p.name);
   form.elements.product.innerHTML =
     `<option value="">Genel / birden fazla ürün</option>` + productNames.map((name) => `<option>${esc(name)}</option>`).join("");
 

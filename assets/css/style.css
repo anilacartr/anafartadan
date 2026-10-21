@@ -825,30 +825,6 @@ dialog::backdrop { background: rgba(18, 26, 13, .55); backdrop-filter: blur(3px)
   .page-header .brand-text small { display: none; }
 }
 
-/* ---------- Deneme paketleri ---------- */
-.trial { background: var(--cream-2); }
-.trial-featured { margin-bottom: 24px; }
-.trial-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); }
-@media (min-width: 760px) { .trial-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
-@media (min-width: 1180px) { .trial-grid { grid-template-columns: repeat(6, 1fr); } }
-.tcard { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
-.tcard:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.tcard-media { position: relative; display: block; width: 100%; aspect-ratio: 1; padding: 0; border: 0; overflow: hidden; cursor: pointer; }
-.tcard-media img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
-.tcard:hover .tcard-media img { transform: scale(1.06); }
-.tcard-media .badge { top: 10px; left: 10px; padding: 4px 10px; font-size: .7rem; }
-.tcard-media .media-fallback { font-size: 2.6rem; }
-.tcard-body { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 14px 14px 16px; }
-.tcard-title { font-size: 1.08rem; line-height: 1.2; }
-.tcard-unit { font-size: .78rem; font-weight: 600; color: var(--muted); }
-.tcard-size { align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: var(--olive-100); color: var(--olive-700); font-size: .8rem; font-weight: 800; }
-.tcard .variants { gap: 6px; }
-.tcard .variant span { padding: 5px 10px; font-size: .78rem; }
-.tcard-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 6px; }
-.tcard .price { font-size: 1.35rem; }
-.tcard .btn-add { flex: none; height: 40px; padding: 0 14px; font-size: .88rem; gap: .35em; }
-.tcard .btn-add .ic { width: 16px; height: 16px; }
-
 /* ---------- Yorumlar ---------- */
 .rv-summary { font-weight: 700; color: var(--ink-soft); }
 .rv-summary[hidden] { display: none; }

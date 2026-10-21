@@ -14,7 +14,7 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const icon = (id, cls = "ic") => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
   const waLink = (text) => `https://wa.me/${C.whatsappNumber}?text=${encodeURIComponent(text)}`;
-  const displayName = (p) => (p.trialOf ? "Deneme · " : "") + p.name;
+  const defaultIndex = (p) => Math.max(0, p.variants.findIndex((v) => v.default));
 
   const store = {
     get(key, fallback) {
@@ -63,7 +63,7 @@
   const variantsHTML = (p, scope) => {
     if (p.variants.length < 2) return "";
     return `<fieldset class="variants"><legend class="sr-only">Seçenek</legend>${p.variants
-      .map((v, i) => `<label class="variant"><input type="radio" name="v-${scope}-${p.id}" value="${i}"${i === 0 ? " checked" : ""}><span>${esc(v.label)}</span></label>`)
+      .map((v, i) => `<label class="variant"><input type="radio" name="v-${scope}-${p.id}" value="${i}"${i === defaultIndex(p) ? " checked" : ""}><span>${esc(v.label)}</span></label>`)
       .join("")}</fieldset>`;
   };
 
@@ -74,13 +74,13 @@
       <div class="qty" role="group" aria-label="Adet">
         <button type="button" data-step="-1" aria-label="Azalt">${icon("i-minus")}</button>
         <input type="number" inputmode="numeric" min="1" max="99" value="1" aria-label="Adet" data-qty>
-        <button type="button" data-step="1" aria-label="Arttır">${icon("i-plus")}</button>
+        <button type="button" data-step="1" aria-label="Artır">${icon("i-plus")}</button>
       </div>
       <button type="button" class="btn btn-add" data-add>${icon("i-bag")} Sepete Ekle</button>
     </div>`;
 
   const cardHTML = (p) => {
-    const v = p.variants[0];
+    const v = p.variants[defaultIndex(p)];
     const wide = p.wide ? " card--wide" : "";
     return `
     <article class="card${wide}" data-product="${p.id}" data-category="${p.category}" data-reveal>
@@ -107,37 +107,13 @@
   };
 
   const grid = $("#productGrid");
-  grid.innerHTML = PRODUCTS.filter((p) => p.category !== "deneme").map(cardHTML).join("");
-
-  // Deneme paketleri: kutu büyük kartta, küçük boylar kompakt kartlarda
-  const trialCardHTML = (p) => {
-    const v = p.variants[0];
-    return `
-    <article class="tcard" data-product="${p.id}" data-reveal>
-      <button type="button" class="tcard-media tone-${p.tone}" data-detail aria-label="${esc(p.name)} hakkında bilgi">
-        <span class="badge gold">Deneme</span>
-        ${mediaHTML(p)}
-      </button>
-      <div class="tcard-body">
-        <h3 class="tcard-title">${esc(p.name)}</h3>
-        ${p.unitNote ? `<p class="tcard-unit">${esc(p.unitNote)}</p>` : ""}
-        ${p.variants.length > 1 ? variantsHTML(p, "trial") : `<span class="tcard-size">${esc(v.label)}</span>`}
-        <div class="tcard-foot">
-          <span class="price" data-price>${priceHTML(v)}</span>
-          <button type="button" class="btn btn-add" data-add aria-label="${esc(p.name)} deneme paketini sepete ekle">${icon("i-plus")} Ekle</button>
-        </div>
-      </div>
-    </article>`;
-  };
-  const trials = PRODUCTS.filter((p) => p.category === "deneme");
-  $("#trialFeatured").innerHTML = trials.filter((p) => p.wide).map(cardHTML).join("");
-  $("#trialGrid").innerHTML = trials.filter((p) => !p.wide).map(trialCardHTML).join("");
+  grid.innerHTML = PRODUCTS.map(cardHTML).join("");
 
   // Hero'daki öne çıkan ürün kartı
   const featured = PRODUCTS.find((p) => p.featured) || PRODUCTS[0];
   const heroCard = $("#heroCard");
   if (heroCard && featured) {
-    const v = featured.variants[0];
+    const v = featured.variants[defaultIndex(featured)];
     heroCard.dataset.product = featured.id;
     heroCard.innerHTML = `
       <div class="hero-card-media tone-${featured.tone}">
@@ -145,7 +121,7 @@
         ${mediaHTML(featured, true)}
       </div>
       <div class="hero-card-body">
-        <span class="hero-card-label">bu hafta köyden</span>
+        <span class="hero-card-label">Bu hafta köyden</span>
         <p class="hero-card-title">${esc(featured.name)}</p>
         <p class="hero-card-price"><b>${fmt(v.price)}</b> / ${esc(v.label)}</p>
         <div class="hero-card-actions">
@@ -169,11 +145,11 @@
   $$("[data-filter-link]").forEach((a) => a.addEventListener("click", () => applyFilter(a.dataset.filterLink)));
 
   /* ---------- Ürün kontrolleri (kart, modal, hero) ---------- */
-  const readSelection = (scopeEl) => {
+  const readSelection = (scopeEl, p) => {
     const checked = $('input[type="radio"]:checked', scopeEl);
     const qtyEl = $("[data-qty]", scopeEl);
     return {
-      v: checked ? Number(checked.value) : 0,
+      v: checked ? Number(checked.value) : defaultIndex(p),
       qty: qtyEl ? clampQty(qtyEl.value) : 1
     };
   };
@@ -192,7 +168,7 @@
     }
     const addBtn = e.target.closest("[data-add]");
     if (addBtn) {
-      const { v, qty } = readSelection(scopeEl);
+      const { v, qty } = readSelection(scopeEl, p);
       addToCart(p.id, v, qty);
       if (!addBtn.dataset.label) addBtn.dataset.label = addBtn.innerHTML;
       addBtn.classList.add("added");
@@ -201,7 +177,7 @@
       addBtn._t = setTimeout(() => { addBtn.classList.remove("added"); addBtn.innerHTML = addBtn.dataset.label; }, 1400);
       return;
     }
-    if (e.target.closest("[data-detail]")) openProduct(p.trialOf || p.id);
+    if (e.target.closest("[data-detail]")) openProduct(p.id);
   });
 
   document.addEventListener("change", (e) => {
@@ -222,7 +198,7 @@
 
   function openProduct(id) {
     const p = byId[id];
-    const v = p.variants[0];
+    const v = p.variants[defaultIndex(p)];
     const ask = `Merhaba, ${p.name} hakkında bilgi almak istiyorum.`;
     productInner.dataset.product = p.id;
     productInner.innerHTML = `
@@ -284,7 +260,7 @@
     else cart.push({ id, v, qty });
     saveCart();
     const { p, v: variant } = lineOf({ id, v, qty });
-    showToast(`${displayName(p)} (${variant.label}) sepete eklendi`);
+    showToast(`${p.name} (${variant.label}) sepete eklendi`);
     $$("[data-cart-count]").forEach((b) => { b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); });
   }
 
@@ -313,12 +289,12 @@
         <li class="cart-item" data-index="${i}">
           <div class="cart-thumb tone-${p.tone}"><span class="media-fallback" aria-hidden="true">${p.emoji || ""}</span><img src="${esc(thumb)}" alt=""></div>
           <div class="cart-item-info">
-            <strong>${esc(displayName(p))}</strong>
+            <strong>${esc(p.name)}</strong>
             <small>${esc(v.label)} · ${fmt(v.price)}</small>
             <div class="qty" role="group" aria-label="Adet">
               <button type="button" data-cart-step="-1" aria-label="Azalt">${icon("i-minus")}</button>
               <input type="number" inputmode="numeric" min="1" max="99" value="${it.qty}" aria-label="Adet" data-cart-qty>
-              <button type="button" data-cart-step="1" aria-label="Arttır">${icon("i-plus")}</button>
+              <button type="button" data-cart-step="1" aria-label="Artır">${icon("i-plus")}</button>
             </div>
           </div>
           <div class="cart-item-side">
@@ -413,7 +389,7 @@
     const lines = [`Merhaba, ${C.brandName} sitesinden sipariş vermek istiyorum. 🌿`, "", "*SİPARİŞ*"];
     cart.forEach((it, i) => {
       const { p, v, total: line } = lineOf(it);
-      lines.push(`${i + 1}. ${displayName(p)} (${v.label}) × ${it.qty} = ${fmt(line)}`);
+      lines.push(`${i + 1}. ${p.name} (${v.label}) × ${it.qty} = ${fmt(line)}`);
     });
     lines.push("", `*Ürün toplamı:* ${fmt(total)}`);
     if (!pickup && C.freeShippingThreshold > 0 && total >= C.freeShippingThreshold) lines.push("*Kargo:* Ücretsiz");
@@ -496,10 +472,11 @@
       </div>`).join("");
     cal.innerHTML = head + rows;
 
-    const active = HARVEST.filter((h) => now >= h.from && now <= h.to).map((h) => h.name);
+    const active = HARVEST.filter((h) => now >= h.from && now <= h.to).map((h) => h.short || h.name);
+    const list = active.length > 1 ? active.slice(0, -1).join(", ") + " ve " + active.at(-1) : active[0];
     $("#calendarNow").innerHTML = active.length
-      ? `<span>Şu an <b>${MONTHS_LONG[now - 1]}</b>: ${esc(active.join(" ve "))} zamanı</span>`
-      : `<span>Şu an <b>${MONTHS_LONG[now - 1]}</b>: stoktaki ürünlerimiz gönderime hazır</span>`;
+      ? `<span><b>${MONTHS_LONG[now - 1]}</b> ayındayız: ${esc(list)} zamanı</span>`
+      : `<span><b>${MONTHS_LONG[now - 1]}</b> ayındayız: stoktaki ürünlerimiz gönderime hazır</span>`;
   }
 
   /* ---------- Görünme animasyonu ---------- */

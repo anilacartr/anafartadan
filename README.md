@@ -18,10 +18,10 @@ Bütün ayarlar **`assets/js/products.js`** dosyasındadır:
 | `paymentOptions` | Sepette gösterilen ödeme seçenekleri |
 | `deliveryOptions` | Teslimat seçenekleri. İkincisi "köye gelip yerinde alma"dır; seçilirse adres ve kargo sorulmaz |
 | `PRODUCTS` | Ürünler, seçenekler (gramaj, litre) ve **fiyatlar** |
-| Deneme paketleri | `PRODUCTS` içinde `category: "deneme"` olan ürünler. Fiyatları büyük boyun kilo/litre fiyatından hesaplanmıştır; büyük boy fiyatı değişirse bunları da güncelleyin |
+| Küçük boylar | Her ürünün `variants` listesindeki küçük gramajlar (150 g, 100 ml, 300 g…). Fiyatları büyük boyun kilo/litre fiyatından hesaplanmıştır; büyük boy fiyatı değişirse bunları da güncelleyin. `default: true` olan boy kartta seçili gelir |
 | `HARVEST` | Hasat takvimindeki aylar |
 
-Tanışma paketi ve Deneme Kutusu'nun fiyatı, içindeki ürünlerin gramaj fiyatlarının toplamıdır.
+Tanışma Paketi ve Aile Paketi'nin fiyatı, içindeki ürünlerin gramaj fiyatlarının toplamıdır.
 
 ## Müşteri yorumları
 

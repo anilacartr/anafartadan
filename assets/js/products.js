@@ -13,7 +13,8 @@ window.SITE_CONFIG = {
   whatsappNumber: "905458787003",
   phoneDisplay: "+90 545 878 70 03",
 
-  instagramUrl: "https://instagram.com/",
+  // Instagram hesabınızın adresi (örn. "https://instagram.com/anafartadan"). Boş bırakılırsa ikon gizlenir.
+  instagramUrl: "",
   address: "Büyükanafarta Köyü, Eceabat / Çanakkale",
   // "Yol tarifi" linki. Tam konumunuzu Google Haritalar'da Paylaş → Bağlantıyı kopyala ile buraya yapıştırabilirsiniz.
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Büyükanafarta+Köyü,+Eceabat,+Çanakkale",
@@ -30,7 +31,9 @@ window.SITE_CONFIG = {
 };
 
 /* Ürünler
-   - variants: Seçenekler (gramaj, litre, tatlı/acı vb.) ve fiyatları (TL)
+   - variants: Seçenekler (gramaj, litre, tatlı/acı vb.) ve fiyatları (TL).
+     Küçük boyların fiyatı, büyük boyun kilo/litre fiyatına göre hesaplanmıştır.
+     default: true olan seçenek kartta seçili gelir.
    - compareAt: (isteğe bağlı) üstü çizili eski fiyat
    - featured: true olan ilk ürün ana sayfadaki "Bu hafta köyden" kartında görünür
    - image: assets/img klasöründeki fotoğraf. Kendi fotoğrafınızı aynı isimle koyabilirsiniz. */
@@ -50,7 +53,8 @@ window.PRODUCTS = [
     featured: true,
     tags: ["Ağartılmamış", "Doğal kurutma"],
     variants: [
-      { label: "1 kg", price: 300 },
+      { label: "150 g", price: 45 },
+      { label: "1 kg", price: 300, default: true },
       { label: "2 kg", price: 600 },
       { label: "5 kg", price: 1500 }
     ],
@@ -77,12 +81,13 @@ window.PRODUCTS = [
     badge: "Çok Satan",
     tags: ["Elle ayıklandı", "Açık renk"],
     variants: [
-      { label: "500 g", price: 380 },
+      { label: "100 g", price: 75 },
+      { label: "500 g", price: 375, default: true },
       { label: "1 kg", price: 750 }
     ],
     details: {
       "İçerik": "%100 iç ceviz.",
-      "Hazırlık": "Küçük partiler halinde kırılır, böylece bekleyip acılaşmaz.",
+      "Hazırlık": "Küçük partiler hâlinde kırılır, böylece bekleyip acılaşmaz.",
       "Saklama": "Hava almayan kapta buzdolabında aylarca, dondurucuda bir yıla kadar tazeliğini korur.",
       "Kullanım": "Kahvaltı, granola, kek, baklava, cevizli erişte ve salatalar."
     },
@@ -103,7 +108,8 @@ window.PRODUCTS = [
     badge: "Yeni Hasat",
     tags: ["Bu sezonun hasadı", "Soğuk sıkım"],
     variants: [
-      { label: "1 L", price: 500 },
+      { label: "100 ml", price: 50 },
+      { label: "1 L", price: 500, default: true },
       { label: "5 L teneke", price: 2500 }
     ],
     details: {
@@ -113,7 +119,7 @@ window.PRODUCTS = [
       "Saklama": "Işık almayan, serin bir dolapta, kapağı kapalı saklayın. Tenekeden cam şişeye aktararak kullanın."
     },
     difference:
-      "Market raflarındaki “riviera” yağlar rafine zeytinyağıyla karıştırılır; kokusu ve aroması zayıftır. Yeni hasat yağdaki acılık ve boğazdaki yakıcılık, yağın taze olduğunu ve polifenol açısından zengin olduğunu gösterir."
+      "Market raflarındaki “Riviera” yağlar rafine zeytinyağıyla karıştırılır; kokusu ve aroması zayıftır. Yeni hasat yağdaki acılık ve boğazdaki yakıcılık, yağın taze olduğunu ve polifenol açısından zengin olduğunu gösterir."
   },
   {
     id: "zeytinyagi-eski-hasat",
@@ -129,7 +135,8 @@ window.PRODUCTS = [
     badge: "Ekonomik",
     tags: ["Yumuşak içim", "Yemeklik"],
     variants: [
-      { label: "1 L", price: 400 },
+      { label: "100 ml", price: 40 },
+      { label: "1 L", price: 400, default: true },
       { label: "5 L teneke", price: 2000 }
     ],
     details: {
@@ -155,7 +162,8 @@ window.PRODUCTS = [
     badge: "Güneş Salçası",
     tags: ["Katkısız", "Güneşte kurutma"],
     variants: [
-      { label: "3 kg", price: 750 },
+      { label: "300 g", price: 75 },
+      { label: "3 kg", price: 750, default: true },
       { label: "6 kg", price: 1400 }
     ],
     details: {
@@ -165,7 +173,7 @@ window.PRODUCTS = [
       "Kullanım": "Yemekler, çorbalar, soslar ve kahvaltılık ezmeler."
     },
     difference:
-      "Fabrika salçası yüksek ısıda hızla koyulaştırılır. Bakanlığın taklit-tağşiş listelerinde zaman zaman nişasta veya boya katılmış salçalara rastlanır. Güneş salçasının kokusu yoğundur, rengi doğaldır, bir kaşığı yeter."
+      "Fabrika salçası yüksek ısıda hızla koyulaştırılır. Tarım ve Orman Bakanlığının taklit-tağşiş listelerinde zaman zaman nişasta veya boya katılmış salçalara rastlanır. Güneş salçasının kokusu yoğundur, rengi doğaldır, bir kaşığı yeter."
   },
   {
     id: "biber-salcasi",
@@ -174,16 +182,18 @@ window.PRODUCTS = [
     name: "Ev Yapımı Biber Salçası",
     tagline: "Tatlı ya da acı, güneşte olgunlaştı",
     description:
-      "Kendi bahçemizde güneşte olgunlaşan kırmızı biberler ayıklanır, çekilir ve tepsilerde güneşte kurutulur. Tatlı ve acı olmak üzere iki çeşit. Mutfağınızın en çok aranan lezzeti olacak.",
+      "Kendi bahçemizde olgunlaşan kırmızı biberler ayıklanır, çekilir ve tepsilerde güneşte kurutulur. Tatlı ve acı olmak üzere iki çeşit. Mutfağınızın en çok aranan lezzeti olacak.",
     image: "assets/img/biber-salcasi.jpg",
     emoji: "🌶️",
     tone: "terra",
     badge: "Tatlı & Acı",
     tags: ["Katkısız", "Boya yok"],
     variants: [
-      { label: "Tatlı · 3 kg", price: 950 },
-      { label: "Acı · 3 kg", price: 950 },
+      { label: "Tatlı · 300 g", price: 95 },
+      { label: "Tatlı · 3 kg", price: 950, default: true },
       { label: "Tatlı · 5 kg", price: 1800 },
+      { label: "Acı · 300 g", price: 95 },
+      { label: "Acı · 3 kg", price: 950 },
       { label: "Acı · 5 kg", price: 1800 }
     ],
     details: {
@@ -196,13 +206,45 @@ window.PRODUCTS = [
       "Biber salçasının rengi doğal olarak koyu kırmızıdır. Parlak ve yapay görünen bir kırmızı, boya katıldığına işaret edebilir. Bizim salçamızda sadece biber ve tuz var."
   },
   {
-    id: "tanisma-paketi",
+    id: "tanisma-kutusu",
     category: "paket",
     categoryLabel: "Paket",
-    name: "Köyün Tadı Tanışma Paketi",
-    tagline: "Dört imza lezzet bir arada",
+    name: "Tanışma Paketi",
+    tagline: "Hepsinden biraz, önce tadına bakın",
     description:
-      "Ailemizin ürünleriyle tanışmanın en güzel yolu: 1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası ve 3 kg biber salçası (tatlı ya da acı). Sevdiklerinize hediye olarak da gönderebilirsiniz.",
+      "Ürünlerimizi ilk kez alacaklar için küçük bir başlangıç: 150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat ve 100 ml eski hasat zeytinyağı, 300 g domates salçası ve 300 g biber salçası. İki zeytinyağını yan yana tadıp farkı kendiniz görün.",
+    collage: [
+      "assets/img/ic-ceviz.jpg",
+      "assets/img/zeytin.jpg",
+      "assets/img/domates-salcasi.jpg",
+      "assets/img/biber-salcasi.jpg"
+    ],
+    emoji: "🧺",
+    tone: "olive",
+    wide: true,
+    badge: "Hepsinden Biraz",
+    tags: ["6 ürün", "Küçük boylar"],
+    // 45 + 75 + 50 + 40 + 75 + 95 = 380 TL
+    variants: [
+      { label: "Tatlı biber salçalı", price: 380 },
+      { label: "Acı biber salçalı", price: 380 }
+    ],
+    details: {
+      "İçindekiler": "150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat zeytinyağı, 100 ml eski hasat zeytinyağı, 300 g domates salçası, 300 g biber salçası (tatlı ya da acı).",
+      "Fiyat": "Paket fiyatı, içindeki ürünlerin gramaj fiyatlarının toplamıdır.",
+      "Kimler için": "Ürünlerimizin tadına önce az miktarda bakmak isteyenler."
+    },
+    difference:
+      "Market rafında bu altı ürünü küçük boylarda, aynı aileden ve bu sezonun hasadından bir arada bulamazsınız."
+  },
+  {
+    id: "aile-paketi",
+    category: "paket",
+    categoryLabel: "Paket",
+    name: "Köyün Tadı Aile Paketi",
+    tagline: "Dört imza lezzet, büyük boylarda",
+    description:
+      "Ailemizin dört imza lezzeti büyük boylarda: 1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası ve 3 kg biber salçası (tatlı ya da acı). Sevdiklerinize hediye olarak da gönderebilirsiniz.",
     collage: [
       "assets/img/zeytinyagi.jpg",
       "assets/img/ceviz.jpg",
@@ -222,126 +264,16 @@ window.PRODUCTS = [
     details: {
       "İçindekiler": "1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası, 3 kg biber salçası (tatlı ya da acı).",
       "Paketleme": "Kırılmaya karşı korumalı kutuda, özenle paketlenir.",
-      "Kimler için": "İlk kez sipariş verenler, sevdiklerine köy lezzeti göndermek isteyenler."
+      "Kimler için": "Kışlık alışverişini köyden yapmak isteyenler, sevdiklerine köy lezzeti göndermek isteyenler."
     },
     difference:
       "Market sepetinde bu dört ürünü aynı aileden ve bu sezonun hasadından bir arada bulmanız mümkün değil."
-  },
-
-  /* ---------- DENEME PAKETLERİ ----------
-     Fiyatlar büyük boyun kilo/litre fiyatına göre hesaplanmıştır.
-     Büyük boy fiyatı değişirse deneme fiyatlarını da güncelleyin.
-     trialOf: "Detay" tıklanınca açılacak asıl ürün */
-  {
-    id: "deneme-kutusu",
-    category: "deneme",
-    categoryLabel: "Deneme",
-    name: "Deneme Kutusu",
-    tagline: "Hepsinden biraz, önce tadına bakın",
-    description:
-      "Ürünlerimizi ilk kez deneyecekler için: 150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat ve 100 ml eski hasat zeytinyağı, 300 g domates salçası ve 300 g biber salçası. İki zeytinyağını yan yana tadıp farkı kendiniz görün.",
-    collage: [
-      "assets/img/ic-ceviz.jpg",
-      "assets/img/zeytin.jpg",
-      "assets/img/domates-salcasi.jpg",
-      "assets/img/biber-salcasi.jpg"
-    ],
-    emoji: "🧺",
-    tone: "olive",
-    wide: true,
-    badge: "Deneme Kutusu",
-    tags: ["6 ürün", "Kilo fiyatına göre"],
-    // 45 + 75 + 50 + 40 + 75 + 95 = 380 TL
-    variants: [
-      { label: "Tatlı biber salçalı", price: 380 },
-      { label: "Acı biber salçalı", price: 380 }
-    ],
-    details: {
-      "İçindekiler": "150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat zeytinyağı, 100 ml eski hasat zeytinyağı, 300 g domates salçası, 300 g biber salçası (tatlı ya da acı).",
-      "Fiyat": "Her ürün, büyük boyunun kilo ya da litre fiyatına göre hesaplanmıştır.",
-      "Kimler için": "Köy ürünlerimizi önce az miktarda denemek isteyenler."
-    }
-  },
-  {
-    id: "deneme-kabuklu-ceviz",
-    trialOf: "kabuklu-ceviz",
-    category: "deneme",
-    categoryLabel: "Deneme",
-    name: "Kabuklu Ceviz",
-    unitNote: "kg fiyatı 300 ₺",
-    image: "assets/img/ceviz.jpg",
-    emoji: "🌰",
-    tone: "walnut",
-    variants: [{ label: "150 g", price: 45 }]
-  },
-  {
-    id: "deneme-ic-ceviz",
-    trialOf: "ic-ceviz",
-    category: "deneme",
-    categoryLabel: "Deneme",
-    name: "İç Ceviz",
-    unitNote: "kg fiyatı 750 ₺",
-    image: "assets/img/ic-ceviz.jpg",
-    emoji: "🌰",
-    tone: "walnut",
-    variants: [{ label: "100 g", price: 75 }]
-  },
-  {
-    id: "deneme-yeni-hasat",
-    trialOf: "zeytinyagi-yeni-hasat",
-    category: "deneme",
-    categoryLabel: "Deneme",
-    name: "Yeni Hasat Zeytinyağı",
-    unitNote: "litre fiyatı 500 ₺",
-    image: "assets/img/zeytinyagi.jpg",
-    emoji: "🫒",
-    tone: "gold",
-    variants: [{ label: "100 ml", price: 50 }]
-  },
-  {
-    id: "deneme-eski-hasat",
-    trialOf: "zeytinyagi-eski-hasat",
-    category: "deneme",
-    categoryLabel: "Deneme",
-    name: "Eski Hasat Zeytinyağı",
-    unitNote: "litre fiyatı 400 ₺",
-    image: "assets/img/zeytin.jpg",
-    emoji: "🫒",
-    tone: "olive",
-    variants: [{ label: "100 ml", price: 40 }]
-  },
-  {
-    id: "deneme-domates-salcasi",
-    trialOf: "domates-salcasi",
-    category: "deneme",
-    categoryLabel: "Deneme",
-    name: "Domates Salçası",
-    unitNote: "3 kg 750 ₺ üzerinden",
-    image: "assets/img/domates-salcasi.jpg",
-    emoji: "🍅",
-    tone: "terra",
-    variants: [{ label: "300 g", price: 75 }]
-  },
-  {
-    id: "deneme-biber-salcasi",
-    trialOf: "biber-salcasi",
-    category: "deneme",
-    categoryLabel: "Deneme",
-    name: "Biber Salçası",
-    unitNote: "3 kg 950 ₺ üzerinden",
-    image: "assets/img/biber-salcasi.jpg",
-    emoji: "🌶️",
-    tone: "terra",
-    variants: [
-      { label: "Tatlı · 300 g", price: 95 },
-      { label: "Acı · 300 g", price: 95 }
-    ]
   }
 ];
 
 /* Hasat takvimi (ay numaraları 1 = Ocak … 12 = Aralık) */
 window.HARVEST = [
-  { name: "Domates & Biber Salçası", from: 8, to: 9, tone: "terra", note: "Güneşte kurutma" },
-  { name: "Ceviz", from: 9, to: 10, tone: "walnut", note: "Silkeleme & kurutma" },
-  { name: "Zeytin & Zeytinyağı", from: 10, to: 12, tone: "gold", note: "Hasat & soğuk sıkım" }
+  { name: "Domates & Biber Salçası", short: "salça", from: 8, to: 9, tone: "terra", note: "Güneşte kurutma" },
+  { name: "Ceviz", short: "ceviz", from: 9, to: 10, tone: "walnut", note: "Silkeleme & kurutma" },
+  { name: "Zeytin & Zeytinyağı", short: "zeytinyağı", from: 10, to: 12, tone: "gold", note: "Hasat & soğuk sıkım" }
 ];
