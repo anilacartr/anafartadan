@@ -19,7 +19,7 @@ Bütün ayarlar **`assets/js/products.js`** dosyasındadır:
 | `deliveryOptions` | Teslimat seçenekleri. İkincisi "köye gelip yerinde alma"dır; seçilirse adres ve kargo sorulmaz |
 | `PRODUCTS` | Ürünler, seçenekler (gramaj, litre) ve **fiyatlar** |
 | Küçük boylar | Her ürünün `variants` listesindeki küçük gramajlar (150 g, 100 ml, 300 g…). Fiyatları büyük boyun kilo/litre fiyatından hesaplanmıştır; büyük boy fiyatı değişirse bunları da güncelleyin. `default: true` olan boy kartta seçili gelir |
-| Fiyatı belirlenmemiş ürün | Seçeneğin fiyatını `price: null` yazarsanız kartta "Fiyat yakında" görünür ve sepet yerine WhatsApp'tan ön sipariş butonu çıkar. Şu an zeytinler böyle |
+| Fiyatı belirlenmemiş ürün | Seçeneğin fiyatını `price: null` yazarsanız kartta "Fiyatı henüz belli değil" yazar ve sepet yerine WhatsApp'tan ön sipariş butonu çıkar. Şu an zeytinler böyle |
 | `availableFrom` | Ürün henüz hazır değilse gönderim tarihi (örn. `"10 Kasım'dan itibaren (tahmini)"`). Kartta, sepette ve sipariş mesajında görünür. Ürün hazır olunca satırı silin |
 | `HARVEST` | Hasat takvimindeki aylar |
 

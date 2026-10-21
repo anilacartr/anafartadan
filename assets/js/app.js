@@ -69,7 +69,7 @@
 
   const hasPrice = (p) => p.variants.every((v) => v.price != null);
   const priceHTML = (v) => v.price == null
-    ? `<span class="price-soon">Fiyat yakında</span>`
+    ? `<span class="price-soon">Fiyatı henüz belli değil</span>`
     : `${fmt(v.price)}${v.compareAt ? `<s>${fmt(v.compareAt)}</s>` : ""}`;
   const availHTML = (p) => p.availableFrom ? `<p class="avail">${icon("i-clock")} Gönderim: ${esc(p.availableFrom)}</p>` : "";
 
@@ -186,7 +186,7 @@
     }
     if (e.target.closest("[data-preorder]")) {
       const v = p.variants[readSelection(scopeEl, p).v];
-      const text = `Merhaba, ${p.name} (${v.label}) için ön sipariş vermek istiyorum.${p.availableFrom ? ` Gönderim: ${p.availableFrom}.` : ""} Fiyat bilgisi alabilir miyim?`;
+      const text = `Merhaba, ${p.name} (${v.label}) için ön sipariş vermek istiyorum.${p.availableFrom ? ` Gönderim: ${p.availableFrom}.` : ""} Fiyatı belli olunca bilgi verebilir misiniz?`;
       const win = window.open(waLink(text), "_blank");
       if (win) win.opener = null;
       return;

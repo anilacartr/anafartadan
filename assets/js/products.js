@@ -151,7 +151,7 @@ window.PRODUCTS = [
       "Market rafındaki zeytinyağlarının çoğunda hasat yılı yazmaz. Biz hangi sezonun yağını sattığımızı açıkça söylüyoruz: yeni hasat mı, eski hasat mı, siz seçersiniz."
   },
   /* Sofralık zeytinler. Fiyatları henüz belirlenmedi: price: null olan seçenekler
-     "Fiyat yakında" olarak görünür ve sepet yerine WhatsApp'tan ön sipariş butonu çıkar.
+     "Fiyatı henüz belli değil" olarak görünür ve sepet yerine WhatsApp'tan ön sipariş butonu çıkar.
      Fiyatı belirleyince null yerine rakamı yazmanız yeterli. */
   {
     id: "siyah-zeytin",
