@@ -23,3 +23,7 @@ The photos were resized and recompressed for the web (hero: 2000 px wide, others
 
 Edits: domates-salcasi.jpg was cropped (about 19% off the top and 3% off each side) to remove
 background clutter. hero.jpg was given a light grain-reducing blur (Gaussian 0.5 px) to keep the file small.
+
+## Kendi fotoğraf ve videolarımız
+
+`assets/img/koy/` ve `assets/video/` klasörlerindeki fotoğraf ve videolar Döner ailesinin kendi bahçesinde çekilmiştir ve ailemize aittir.

@@ -43,14 +43,15 @@ window.PRODUCTS = [
     id: "kabuklu-ceviz",
     category: "ceviz",
     categoryLabel: "Ceviz",
-    name: "Kabuklu Ceviz",
-    tagline: "Yeni hasat, ince kabuklu köy cevizi",
+    name: "Yeni Mahsul Kabuklu Ceviz",
+    tagline: "Bu sezonun hasadı, ince kabuklu köy cevizi",
     description:
-      "Ailemizin bahçesindeki yaşlı ceviz ağaçlarından elle silkelenen, yeşil kabuğundan ayrıldıktan sonra havadar ortamda doğal yollarla kurutulan ceviz. Kabuğu ağartılmaz; rengi doğaldır, içi dolgun ve tatlıdır.",
-    image: "assets/img/ceviz.jpg",
+      "Bu sezon kendi ceviz bahçemizden elle silkelenen, yeşil kabuğundan ayrıldıktan sonra güneşte ve havada doğal yollarla kurutulan ceviz. Kabuğu ağartılmaz; rengi doğaldır, içi dolgun ve tatlıdır.",
+    image: "assets/img/koy/ceviz-yakin.jpg",
+    imageAlt: "Bahçemizden yeni mahsul kabuklu cevizler",
     emoji: "🌰",
     tone: "walnut",
-    badge: "Yeni Hasat",
+    badge: "Yeni Mahsul",
     featured: true,
     tags: ["Ağartılmamış", "Doğal kurutma"],
     variants: [
@@ -67,6 +68,35 @@ window.PRODUCTS = [
     },
     difference:
       "Markette satılan kabuklu cevizlerin kabuğu açık renkli görünsün diye ağartılabilir. Bizim cevizimizin kabuğu doğal rengindedir; biraz lekeli olabilir ama içi tertemiz ve tatlıdır."
+  },
+  {
+    id: "kabuklu-ceviz-eski",
+    category: "ceviz",
+    categoryLabel: "Ceviz",
+    name: "Eski Mahsul Kabuklu Ceviz",
+    tagline: "Geçen sezondan, uygun fiyatlı",
+    description:
+      "Geçen sezon bahçemizden topladığımız kabuklu ceviz. Kabuğunda saklandığı için iç ceviz gibi çabuk bayatlamaz; yeni mahsule göre daha ekonomiktir. Kek, baklava ve yemeklerde gönül rahatlığıyla kullanabilirsiniz.",
+    image: "assets/img/koy/ceviz-kasa-genis.jpg",
+    imageAlt: "Tahta kasada kabuklu cevizler",
+    emoji: "🌰",
+    tone: "walnut",
+    badge: "Ekonomik",
+    tags: ["Ağartılmamış", "Uygun fiyat"],
+    variants: [
+      { label: "150 g", price: 36 },
+      { label: "1 kg", price: 240, default: true },
+      { label: "2 kg", price: 480 },
+      { label: "5 kg", price: 1200 }
+    ],
+    details: {
+      "İçerik": "%100 ceviz. Hiçbir kimyasal işlem görmemiştir.",
+      "Hasat": "Geçen sezon (Eylül – Ekim).",
+      "Saklama": "Serin, kuru ve havadar bir yerde, file ya da bez torbada saklayın.",
+      "Kullanım": "Kek, baklava, kurabiye, yemekler ve kahvaltı."
+    },
+    difference:
+      "Market rafındaki cevizlerin çoğunda hasat yılı yazmaz. Biz hangi mahsulü sattığımızı açıkça söylüyoruz: yeni mahsul mü, eski mahsul mü, siz seçersiniz."
   },
   {
     id: "ic-ceviz",
@@ -298,7 +328,7 @@ window.PRODUCTS = [
     name: "Tanışma Paketi",
     tagline: "Hepsinden biraz, önce tadına bakın",
     description:
-      "Ürünlerimizi ilk kez alacaklar için küçük bir başlangıç: 150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat ve 100 ml eski hasat zeytinyağı, 200 g domates salçası ve 200 g biber salçası. İki zeytinyağını yan yana tadıp farkı kendiniz görün.",
+      "Ürünlerimizi ilk kez alacaklar için küçük bir başlangıç: 150 g yeni mahsul kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat ve 100 ml eski hasat zeytinyağı, 200 g domates salçası ve 200 g biber salçası. İki zeytinyağını yan yana tadıp farkı kendiniz görün.",
     collage: [
       "assets/img/ic-ceviz.jpg",
       "assets/img/zeytin.jpg",
@@ -307,7 +337,6 @@ window.PRODUCTS = [
     ],
     emoji: "🧺",
     tone: "olive",
-    wide: true,
     badge: "Hepsinden Biraz",
     tags: ["6 ürün", "Küçük boylar"],
     availableFrom: "10 Kasım'dan itibaren (tahmini)",
@@ -317,7 +346,7 @@ window.PRODUCTS = [
       { label: "Acı biber salçalı", price: 345 }
     ],
     details: {
-      "İçindekiler": "150 g kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat zeytinyağı, 100 ml eski hasat zeytinyağı, 200 g domates salçası, 200 g biber salçası (tatlı ya da acı).",
+      "İçindekiler": "150 g yeni mahsul kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat zeytinyağı, 100 ml eski hasat zeytinyağı, 200 g domates salçası, 200 g biber salçası (tatlı ya da acı).",
       "Fiyat": "Paket fiyatı, içindeki ürünlerin gramaj fiyatlarının toplamıdır.",
       "Kimler için": "Ürünlerimizin tadına önce az miktarda bakmak isteyenler."
     },
@@ -331,16 +360,15 @@ window.PRODUCTS = [
     name: "Köyün Tadı Aile Paketi",
     tagline: "Dört imza lezzet, büyük boylarda",
     description:
-      "Ailemizin dört imza lezzeti büyük boylarda: 1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası ve 3 kg biber salçası (tatlı ya da acı). Sevdiklerinize hediye olarak da gönderebilirsiniz.",
+      "Ailemizin dört imza lezzeti büyük boylarda: 1 L yeni hasat zeytinyağı, 1 kg yeni mahsul kabuklu ceviz, 3 kg domates salçası ve 3 kg biber salçası (tatlı ya da acı). Sevdiklerinize hediye olarak da gönderebilirsiniz.",
     collage: [
       "assets/img/zeytinyagi.jpg",
-      "assets/img/ceviz.jpg",
+      "assets/img/koy/ceviz-yakin.jpg",
       "assets/img/domates-salcasi.jpg",
       "assets/img/biber-salcasi.jpg"
     ],
     emoji: "🧺",
     tone: "olive",
-    wide: true,
     badge: "4'ü Bir Arada",
     tags: ["Hediye için ideal", "4 ürün"],
     availableFrom: "10 Kasım'dan itibaren (tahmini)",
@@ -350,7 +378,7 @@ window.PRODUCTS = [
       { label: "Acı biber salçalı", price: 2825 }
     ],
     details: {
-      "İçindekiler": "1 L yeni hasat zeytinyağı, 1 kg kabuklu ceviz, 3 kg domates salçası, 3 kg biber salçası (tatlı ya da acı).",
+      "İçindekiler": "1 L yeni hasat zeytinyağı, 1 kg yeni mahsul kabuklu ceviz, 3 kg domates salçası, 3 kg biber salçası (tatlı ya da acı).",
       "Paketleme": "Kırılmaya karşı korumalı kutuda, özenle paketlenir.",
       "Kimler için": "Kışlık alışverişini köyden yapmak isteyenler, sevdiklerine köy lezzeti göndermek isteyenler."
     },

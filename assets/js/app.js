@@ -56,7 +56,7 @@
     const loading = eager ? "" : ' loading="lazy"';
     const inner = p.collage
       ? `<span class="collage">${p.collage.map((src) => `<img src="${esc(src)}" alt=""${loading}>`).join("")}</span>`
-      : `<img src="${esc(p.image)}" alt="${esc(p.name)}"${loading}>`;
+      : `<img src="${esc(p.image)}" alt="${esc(p.imageAlt || p.name)}"${loading}>`;
     return `<span class="media-fallback" aria-hidden="true">${p.emoji || ""}</span>${inner}`;
   };
 

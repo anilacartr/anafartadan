@@ -35,9 +35,15 @@ Yorumlar **`assets/js/yorumlar.js`** dosyasındadır. Müşteri, Yorumlar sayfas
 
 Adı tam yazın; site otomatik olarak **Ay\*\*\* Yı\*\*\*** şeklinde gizler. İlk yorum eklendiğinde ana sayfadaki "Müşterilerimiz ne diyor?" bölümü de kendiliğinden görünür hale gelir. Yalnızca gerçek müşterilerden gelen ve yayın izni verilmiş yorumları ekleyin.
 
-## Fotoğraflar
+## Köy fotoğrafları ve videoları
 
-`assets/img/` klasöründeki fotoğraflar Pexels'ten alınmıştır. Ücretsiz ve ticari kullanıma açıktır (bkz. `assets/img/CREDITS.md`). Köyden çekeceğiniz gerçek ürün fotoğraflarını **aynı dosya adıyla** bu klasöre koyarsanız sitede otomatik olarak onlar görünür. Gerçek kavanoz, şişe ve köy fotoğrafları güveni ciddi şekilde artırır.
+Ceviz bahçemizin gerçek fotoğrafları `assets/img/koy/`, videoları `assets/video/` klasöründedir. Bunlar web için küçültülmüş kopyalardır. WhatsApp'tan gelen orijinal dosyalar (`WhatsApp …` adlı olanlar) aynı klasörde durur ama yayına gönderilmez.
+
+Yeni bir fotoğraf eklemek için yatay, en az 1600 px genişlikte bir JPG'yi bu klasöre koyup sayfada kullanmanız yeterlidir. Videolar sessiz, kısa ve MP4 olmalıdır. Videolar ekrana girince kendiliğinden oynar, ekrandan çıkınca durur.
+
+## Stok fotoğraflar
+
+`assets/img/` klasöründeki diğer fotoğraflar Pexels'ten alınmıştır. Ücretsiz ve ticari kullanıma açıktır (bkz. `assets/img/CREDITS.md`). Köyden çekeceğiniz gerçek ürün fotoğraflarını **aynı dosya adıyla** bu klasöre koyarsanız sitede otomatik olarak onlar görünür. Gerçek kavanoz, şişe ve köy fotoğrafları güveni ciddi şekilde artırır.
 
 Önerilen ölçü: yatay, en az 1400 px genişlik, 400 KB'ın altında JPG.
 

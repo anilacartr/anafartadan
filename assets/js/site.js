@@ -25,6 +25,18 @@
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 
+  // data-autoplay videolar ekrana girince oynar, çıkınca durur (hareket azaltma tercihinde oynamaz)
+  const autoVideos = $$("video[data-autoplay]");
+  if (autoVideos.length && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) en.target.play().catch(() => {});
+        else en.target.pause();
+      });
+    }, { threshold: 0.35 });
+    autoVideos.forEach((v) => { v.muted = true; io.observe(v); });
+  }
+
   // Yüklenemeyen görselleri gizle, altındaki yedek görünüm kalsın
   document.addEventListener("error", (e) => {
     if (e.target.tagName === "IMG") e.target.classList.add("img-missing");
