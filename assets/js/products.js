@@ -51,14 +51,14 @@ window.PRODUCTS = [
     imageAlt: "Bahçemizden yeni mahsul kabuklu cevizler",
     emoji: "🌰",
     tone: "walnut",
-    badge: "Yeni Mahsul",
+    badge: "Fiyat Düştü",
     featured: true,
     tags: ["Ağartılmamış", "Doğal kurutma"],
     variants: [
-      { label: "150 g", price: 45 },
-      { label: "1 kg", price: 300, default: true },
-      { label: "2 kg", price: 600 },
-      { label: "5 kg", price: 1500 }
+      { label: "200 g", price: 50, compareAt: 60 },
+      { label: "1 kg", price: 250, compareAt: 300, default: true },
+      { label: "2 kg", price: 500, compareAt: 600 },
+      { label: "5 kg", price: 1250, compareAt: 1500 }
     ],
     details: {
       "İçerik": "%100 ceviz. Hiçbir kimyasal işlem görmemiştir.",
@@ -328,7 +328,7 @@ window.PRODUCTS = [
     name: "Tanışma Paketi",
     tagline: "Hepsinden biraz, önce tadına bakın",
     description:
-      "Ürünlerimizi ilk kez alacaklar için küçük bir başlangıç: 150 g yeni mahsul kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat ve 100 ml eski hasat zeytinyağı, 200 g domates salçası ve 200 g biber salçası. İki zeytinyağını yan yana tadıp farkı kendiniz görün.",
+      "Ürünlerimizi ilk kez alacaklar için küçük bir başlangıç: 200 g yeni mahsul kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat ve 100 ml eski hasat zeytinyağı, 200 g domates salçası ve 200 g biber salçası. İki zeytinyağını yan yana tadıp farkı kendiniz görün.",
     collage: [
       "assets/img/ic-ceviz.jpg",
       "assets/img/zeytin.jpg",
@@ -340,13 +340,13 @@ window.PRODUCTS = [
     badge: "Hepsinden Biraz",
     tags: ["6 ürün", "Küçük boylar"],
     availableFrom: "10 Kasım'dan itibaren (tahmini)",
-    // 45 + 75 + 50 + 40 + 60 + 75 = 345 TL
+    // 50 + 75 + 50 + 40 + 60 + 75 = 350 TL
     variants: [
-      { label: "Tatlı biber salçalı", price: 345 },
-      { label: "Acı biber salçalı", price: 345 }
+      { label: "Tatlı biber salçalı", price: 350 },
+      { label: "Acı biber salçalı", price: 350 }
     ],
     details: {
-      "İçindekiler": "150 g yeni mahsul kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat zeytinyağı, 100 ml eski hasat zeytinyağı, 200 g domates salçası, 200 g biber salçası (tatlı ya da acı).",
+      "İçindekiler": "200 g yeni mahsul kabuklu ceviz, 100 g iç ceviz, 100 ml yeni hasat zeytinyağı, 100 ml eski hasat zeytinyağı, 200 g domates salçası, 200 g biber salçası (tatlı ya da acı).",
       "Fiyat": "Paket fiyatı, içindeki ürünlerin gramaj fiyatlarının toplamıdır.",
       "Kimler için": "Ürünlerimizin tadına önce az miktarda bakmak isteyenler."
     },
@@ -372,10 +372,10 @@ window.PRODUCTS = [
     badge: "4'ü Bir Arada",
     tags: ["Hediye için ideal", "4 ürün"],
     availableFrom: "10 Kasım'dan itibaren (tahmini)",
-    // 500 (1 L yeni hasat) + 300 (1 kg ceviz) + 900 (3 kg domates) + 1.125 (3 kg biber) = 2.825 TL
+    // 500 (1 L yeni hasat) + 250 (1 kg ceviz) + 900 (3 kg domates) + 1.125 (3 kg biber) = 2.775 TL
     variants: [
-      { label: "Tatlı biber salçalı", price: 2825 },
-      { label: "Acı biber salçalı", price: 2825 }
+      { label: "Tatlı biber salçalı", price: 2775 },
+      { label: "Acı biber salçalı", price: 2775 }
     ],
     details: {
       "İçindekiler": "1 L yeni hasat zeytinyağı, 1 kg yeni mahsul kabuklu ceviz, 3 kg domates salçası, 3 kg biber salçası (tatlı ya da acı).",

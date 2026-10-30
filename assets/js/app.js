@@ -130,7 +130,7 @@
       <div class="hero-card-body">
         <span class="hero-card-label">Bu hafta köyden</span>
         <p class="hero-card-title">${esc(featured.name)}</p>
-        <p class="hero-card-price"><b>${fmt(v.price)}</b> / ${esc(v.label)}</p>
+        <p class="hero-card-price"><b>${fmt(v.price)}</b>${v.compareAt ? ` <s>${fmt(v.compareAt)}</s>` : ""} / ${esc(v.label)}</p>
         <div class="hero-card-actions">
           <button type="button" class="btn btn-dark" data-add>${icon("i-bag")} Sepete Ekle</button>
           <button type="button" class="btn btn-gold" data-detail>İncele</button>
